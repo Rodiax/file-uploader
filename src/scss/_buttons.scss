@@ -1,0 +1,33 @@
+@mixin arrow-button($direction: left, $color: rgba(128, 128, 128, .5), $thickness: 10px, $size: 30px, $margin: 20px) {
+    border: none;
+    background: transparent;
+    outline: none;
+    
+    border-top: $thickness solid darken($color, 20%);
+    border-left: $thickness solid darken($color, 20%);
+
+    width: $size;
+    height: $size;
+
+    margin: $margin;
+
+    cursor: pointer;
+
+    transition: border .2s linear;
+
+    &:hover {
+        border-color: darken($color, 40%);
+    }
+
+    @if ($direction == left) {
+        transform: rotate(-45deg);
+    } @else if ($direction == right) {
+        transform: rotate(135deg);
+    } @else if ($direction == up) {
+        transform: rotate(45deg);
+    } @else {
+        transform: rotate(220deg);
+    }   
+
+    @content;
+}
